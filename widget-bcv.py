@@ -3,7 +3,7 @@ import requests
 
 url="https://www.bcv.org.ve/"
 
-response = requests.get(url, verify="bcv-org-ve.pem")
+response = requests.get(url, verify="bcv-org-ve-chain.pem")
 soup = BeautifulSoup(response.text, "html.parser")
 
 # Extraer información de un div con clase específica
