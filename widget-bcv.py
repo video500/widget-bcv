@@ -1,10 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 
-url="https://www.bcv.org.ve/"
+#url="https://www.bcv.org.ve/"
+url="bcv.html"
 
-response = requests.get(url, verify="bcv-org-ve-chain.pem")
-soup = BeautifulSoup(response.text, "html.parser")
+#response = requests.get(url, verify="bcv-org-ve-chain.pem")
+with open(url,"r", encoding="utf-8") as file:
+    html_content = file.read()
+soup = BeautifulSoup(html_content, "html.parser")
 
 # Extraer información de un div con clase específica
 dolar_div = soup.find("div", id="dolar")
