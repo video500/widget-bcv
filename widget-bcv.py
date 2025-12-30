@@ -20,6 +20,12 @@ if dolar_div:
     valor = dolar_div.find("div", class_="centrado").strong.text.strip()  # Extrae el texto dentro de <strong>
 else:
     valor = "Error"
+
+euro_div = soup.find("div", id="euro")
+if euro_div:
+    valore = euro_div.find("div", class_="centrado").strong.text.strip()  # Extrae el texto dentro de <strong>
+else:
+    valore = "Error"
     
 fecha_span = soup.find("span", class_="date-display-single")
 
@@ -33,8 +39,8 @@ else:
 
 divs = soup_telegram.find_all("div", class_="tgme_widget_message_text js-message_text")
 
-# Filtrar los divs que contienen el emoji 🗓
-divs_con_emoji = [div for div in divs if "🗓" in div.get_text()]
+# Filtrar los divs que contienen el emoji 🕒
+divs_con_emoji = [div for div in divs if "🕒" in div.get_text()]
 
 # Seleccionar el último de la lista filtrada
 ultimo_div = divs_con_emoji[-1] if divs_con_emoji else None
@@ -54,5 +60,5 @@ if ultimo_div:
 else:
     print("No se encontraron elementos que coincidan.")
     
-print (f"BCV\n{fecha_texto}: {valor}\nParalelo\n{textos_paralelo}")
+print (f"{fecha_texto}\nDolar: {valor}\nEuro: {valore}\nParalelo\n{textos_paralelo}")
 
